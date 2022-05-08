@@ -1,22 +1,16 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import {BrowserRouter, Route} from 'react-router-dom';
-
-import { Landing } from './pages/Landing';
-import { AcessoUser } from './pages/AcessoUser';
-//import {WeatherApp} from './pages/WeatherApp';
+import { Landing } from "./pages/Landing";
+import { AcessoUser } from "./pages/AcessoUser";
 
 function App() {
-
   return (
-
     <BrowserRouter>
-    
-        <Route path="/" exact component={Landing}/>
-        <Route path="/user" exact component={AcessoUser}/>
-      
-     
+      <Routes>
+        <Route path="/"   element={<Landing />} />
+        <Route path="/user"  element={<AcessoUser />} />
+      </Routes>
     </BrowserRouter>
-   
   );
 }
 

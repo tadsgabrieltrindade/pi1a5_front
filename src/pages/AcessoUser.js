@@ -1,16 +1,24 @@
-import React from 'react';
+import React from "react";
+import { useLocation } from "react-router-dom";
 
-import '../styles/pages/login.css';
+
+import "../styles/pages/login.css";
 
 export function AcessoUser() {
 
-    return(
-        
-    <div className='container'>
+  const location = useLocation();
+  let data = 'a';
+  if(location.state){
+    data = location.state.data;
+  }
 
-         
+  console.log(data);
 
+
+
+  return (
+    <div className="container">
+      <h1>User rota</h1>
     </div>
-
-    )
+  );
 }
