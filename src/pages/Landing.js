@@ -1,44 +1,35 @@
-import React, { useState } from 'react';
-//import { Link } from 'react-router-dom';
-import {GoogleLogin} from 'react-google-login';
-import '../styles/pages/landing.css'
+import { gapi } from "gapi-script";
+import React, { useEffect } from "react";
+import Loggin from "../components/loggin";
+import "../styles/pages/landing.css";
+
+const clientId =
+  "961754812465-2ovtm0ao3pdnrnk9letc5d8g5arifl9v.apps.googleusercontent.com";
+
 
 export function Landing() {
-
-
-    const responseGoogle = (response) => {
-
-		console.log(response);
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
     }
-  
-    return(
-        
+
+    gapi.load("client:auth2", start);
+  });
+
+  return (
     <div id="page-landing">
-
-
       <div className="content-wrapper">
+        <main>
+          <h1>Nunca foi tão fácil gerenciar Estágio.</h1>
+        </main>
 
-          <main>
-              <h1>Nunca foi tão fácil gerenciar Estágio.</h1>
-          </main>
-
-            <div className="button-wrapper">
-                
-
-            <GoogleLogin
-				clientId="961754812465-2ovtm0ao3pdnrnk9letc5d8g5arifl9v.apps.googleusercontent.com"
-				buttonText="Continuar com o Google"
-				onSuccess={responseGoogle}
-				onFailure={responseGoogle}
-			/>
-
-            </div>
-
+        <div className="button-wrapper">
+          <Loggin />
+        </div>
       </div>
-
-
     </div>
-
-    )
+  );
 }
-
